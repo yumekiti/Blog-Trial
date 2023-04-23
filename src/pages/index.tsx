@@ -1,6 +1,7 @@
 import { Box, Flex, Text } from '@chakra-ui/react'
 import Head from 'next/head'
 import Header from './components/Header'
+import MainBijual from './components/MainBijual'
 
 export default function Index() {
   return (
@@ -8,9 +9,8 @@ export default function Index() {
       <Head>
 
       </Head>
-      <Box w={'100%'} h={'100%'}>
-        <Header />
-      </Box>
+      <Header />
+      <MainBijual />
     </>
   )
 }
