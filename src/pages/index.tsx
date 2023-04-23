@@ -7,7 +7,7 @@ export default function Index() {
   return (
     <>
       <Head>
-
+        <title>My Blog</title>
       </Head>
       <Header />
       <MainBijual />
