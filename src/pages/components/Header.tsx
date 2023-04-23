@@ -9,7 +9,7 @@ export default function Header() {
     return (
         <>
             <Box as='header' position={'relative'}>
-                <Flex position={'fixed'} top={0} w={'100%'} h={'8vh'} bg={'blue'}>
+                <Flex position={'fixed'} top={0} w={'100%'} h={'8vh'}>
                     <Text
                         fontSize={{ base: '4xl', lg: '6xl' }}
                         w={'50%'}
