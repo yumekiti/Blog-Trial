@@ -25,7 +25,6 @@ export default function MainBijual() {
                     w={'80%'}
                     h={'95vh'}
                 >
-
                 </Box>
             </Flex>
         </>
