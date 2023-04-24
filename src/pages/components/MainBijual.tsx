@@ -4,10 +4,10 @@ import style from '@/styles/mainbijual.module.scss'
 export default function MainBijual() {
     return (
         <>
-            <Flex w={'100%'} h={'92vh'} marginTop={'8vh'} position={'relative'}>
+            <Flex w={'100%'} h={'95vh'} position={'relative'}>
                 <Text
                     w={'20%'}
-                    h={'92vh'}
+                    h={'95vh'}
                     display={'flex'}
                     justifyContent={'center'}
                     alignItems={'center'}
@@ -19,7 +19,7 @@ export default function MainBijual() {
                 >さらにもっと自分を。</Text>
                 <Box
                     w={'80%'}
-                    h={'92vh'}
+                    h={'95vh'}
                     marginLeft={'20%'}
                     bgGradient={'linear(to-tl,blue.200,purple.200)'}
                 ></Box>
