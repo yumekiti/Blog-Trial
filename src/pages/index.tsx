@@ -3,6 +3,7 @@ import Head from 'next/head'
 import Header from './components/Header'
 import MainBijual from './components/MainBijual'
 import Profil from './components/Profil'
+import Articl from './components/Article'
 
 export default function Index() {
   return (
@@ -13,6 +14,7 @@ export default function Index() {
       <Header />
       <MainBijual />
       <Profil />
+      <Articl />
     </>
   )
 }
