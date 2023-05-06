@@ -1,13 +1,15 @@
 import { Box, Flex, Text } from '@chakra-ui/react'
+import Image from 'next/image'
 
-export default function Profil() {
+export default function Profile() {
     return (
         <>
             <Flex w={'100%'} h={'50rem'} flexDir={'column'} justifyContent={'center'} alignItems={'center'} marginTop={'40rem'}>
-                <Text fontSize={'5xl'} paddingBottom={'2rem'}>＜Profil＞</Text>
+                <Text fontSize={'5xl'} paddingBottom={'2rem'}>＜Profile＞</Text>
                 <Flex w={'90rem'} h={'40rem'} bg={'#fff'} justifyContent={'center'} alignItems={'center'} boxShadow={'dark-lg'}>
                     <Flex w={'40rem'} h={'35rem'} bg={'purple'} justifyContent={'center'} alignItems={'center'} marginRight={'5rem'}>
-                        <Text fontSize={'4xl'} color={'#fff'} fontWeight={'extrabold'}>ECC</Text>
+                        {/* <Text fontSize={'4xl'} color={'#fff'} fontWeight={'extrabold'}>ECC</Text> */}
+                        <Image src={'/images/profile.svg'} width={400} height={350} alt={'profile'} />
                     </Flex>
                     <Box w={'40rem'} h={'35rem'}>
                         <Text fontSize={'2xl'} padding={'2rem 2rem 2rem 0'}>

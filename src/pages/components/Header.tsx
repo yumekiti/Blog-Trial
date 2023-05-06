@@ -9,12 +9,14 @@ export default function Header() {
     return (
         <>
             <Box as='header'>
-                <Flex w={'100%'} h={'5vh'}>
+                <Flex w={'100%'}>
                     <Text
                         fontSize={{ base: '4xl', lg: '6xl' }}
                         w={'50%'}
                         paddingLeft={'10rem'}
                         fontWeight={'extrabold'}
+                        display={'flex'}
+                        alignItems={'center'}
                     >ECC Blog</Text>
                     <UnorderedList
                         w={'50%'}
@@ -24,18 +26,22 @@ export default function Header() {
                         justifyContent={'space-around'}
                         padding={'2rem'}
                         fontWeight={'bold'}
+                        alignItems={'center'}
                     >
                         <ListItem
+                            _hover={{ textDecoration: 'underline' }}
                             onClick={() => router.push('/')}
                             cursor={'pointer'}
                             fontSize={{ base: '2xl', lg: '3xl' }}
                         >Profile</ListItem>
                         <ListItem
+                            _hover={{ textDecoration: 'underline' }}
                             onClick={() => router.push('/')}
                             cursor={'pointer'}
                             fontSize={{ base: '2xl', lg: '3xl' }}
-                        >article</ListItem>
+                        >Articlee</ListItem>
                         <ListItem
+                            _hover={{ textDecoration: 'underline' }}
                             onClick={() => router.push('/')}
                             cursor={'pointer'}
                             fontSize={{ base: '2xl', lg: '3xl' }}
