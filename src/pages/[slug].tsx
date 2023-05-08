@@ -97,7 +97,9 @@ export default function Post({ postData, slug }: PostProps) {
               <Text fontSize={'xl'}>{title}</Text>
             </CardHeader>
             <CardBody>
-              <ReactMarkdown children={postData.content} components={ChakraUIRenderer(renderers)} />
+              <ReactMarkdown components={ChakraUIRenderer(renderers)}>
+                {postData.content}
+              </ReactMarkdown>
             </CardBody>
           </Card>
         </GridItem>
