@@ -10,7 +10,7 @@ export default function MainBijual() {
                 bgGradient={'linear(to-tl,blue.200,purple.200)'}
                 position={'relative'}>
                 <Text
-                    w={'20%'}
+                    w={'30%'}
                     h={'95vh'}
                     display={'flex'}
                     justifyContent={'center'}
@@ -22,7 +22,7 @@ export default function MainBijual() {
                     fontWeight={'extrabold'}
                 >さらにもっと自分を。</Text>
                 <Box
-                    w={'80%'}
+                    w={'70%'}
                     h={'95vh'}
                 >
                 </Box>

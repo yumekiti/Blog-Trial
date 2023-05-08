@@ -1,10 +1,10 @@
 import { Box, Flex, Text, Button } from '@chakra-ui/react'
 
-export default function Articl() {
+export default function Article() {
     return (
         <>
             <Flex w={'100%'} h={'150rem'} flexDir={'column'} justifyContent={'center'} alignItems={'center'} marginTop={'50rem'} bg={'#fff'}>
-                <Text fontSize={'5xl'} marginBottom={'2rem'}>＜Articl＞</Text>
+                <Text fontSize={'5xl'} marginBottom={'2rem'}>＜Article＞</Text>
                 <Flex flexWrap={'wrap'} w={'100rem'} h={'145rem'} boxShadow={'dark-lg'} gap={'4rem'} justifyContent={'center'} alignItems={'center'}>
                     <Box>
                         <Flex bg={'blue'} w={'40rem'} h={'30rem'} justifyContent={'center'} alignItems={'center'}>
