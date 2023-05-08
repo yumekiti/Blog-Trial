@@ -42,7 +42,7 @@ export const getStaticProps: GetStaticProps<PostProps, { slug: string }> = async
 
 const components = (slug: string) => ({
   img: (image: any) => {
-    const src = `/contents/${slug}/${image.src}`;
+    const src = `${'/' + process.env.BRANCH_NAME || ''}/contents/${slug}/${image.src}`;
     const metaString = image.alt;
     const alt = metaString.replace(/ *{[\d:\/]+} */g, "");
     const matchResult = metaString.match(/{((\d+):)?(\d+\/\d+)}/);
@@ -85,7 +85,7 @@ export default function Post({ postData, slug }: PostProps) {
           w={'50%'}
         >
           <Box padding={'2rem'}>
-            <Image src={`/contents/${slug}/${visual}`} alt={title} width={640} height={360} />
+            <Image src={`${'/' + process.env.BRANCH_NAME || ''}/contents/${slug}/${visual}`} alt={title} width={640} height={360} />
             <Text fontSize={'6xl'} marginTop={'2rem'}>{title}</Text>
             <Text fontSize={'2xl'}>{date}</Text>
             <Text fontSize={'3xl'} marginTop={'2rem'}>{tags}</Text>
