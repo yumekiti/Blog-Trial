@@ -1,6 +1,6 @@
 import { Box, Flex, Text } from '@chakra-ui/react'
 import Head from 'next/head'
-import Header from './components/Header'
+import Header from '../components/Header'
 import { getSlugs } from '../libs/markdown'
 import Link from "next/link";
 import { getPosts } from "@/libs/markdown";
