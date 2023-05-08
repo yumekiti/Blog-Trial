@@ -39,6 +39,8 @@ export const getPosts = () => {
     return {
       slug,
       title: data.title,
+      date: data.date,
+      visual: `/contents/${slug}/${data.visual}`,
       tags: data.tags,
       // content: htmlContent
     }

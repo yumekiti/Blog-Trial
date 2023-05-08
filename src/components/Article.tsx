@@ -1,47 +1,25 @@
-import { Box, Flex, Text, Button } from '@chakra-ui/react'
+import { FC } from 'react'
+import Link from 'next/link'
+import { Image, Flex, Text, Button } from '@chakra-ui/react'
 
-export default function Article() {
+type Props = {
+    posts: any
+}
+
+const Article: FC<Props> = ({ posts }) => {
     return (
         <>
             <Flex w={'100%'} h={'150rem'} flexDir={'column'} justifyContent={'center'} alignItems={'center'} marginTop={'50rem'} bg={'#fff'}>
                 <Text fontSize={'5xl'} marginBottom={'2rem'}>＜Article＞</Text>
-                <Flex flexWrap={'wrap'} w={'100rem'} h={'145rem'} boxShadow={'dark-lg'} gap={'4rem'} justifyContent={'center'} alignItems={'center'}>
-                    <Box>
-                        <Flex bg={'blue'} w={'40rem'} h={'30rem'} justifyContent={'center'} alignItems={'center'}>
-                            <Text color={'#fff'} fontSize={'9xl'}>img</Text>
-                        </Flex>
-                        <Text fontSize={'3xl'} marginTop={'2rem'}>HTMLについて</Text>
-                    </Box>
-                    <Box>
-                        <Flex bg={'blue'} w={'40rem'} h={'30rem'} justifyContent={'center'} alignItems={'center'}>
-                            <Text color={'#fff'} fontSize={'9xl'}>img</Text>
-                        </Flex>
-                        <Text fontSize={'3xl'} marginTop={'2rem'}>CSSについて</Text>
-                    </Box>
-                    <Box>
-                        <Flex bg={'blue'} w={'40rem'} h={'30rem'} justifyContent={'center'} alignItems={'center'}>
-                            <Text color={'#fff'} fontSize={'9xl'}>img</Text>
-                        </Flex>
-                        <Text fontSize={'3xl'} marginTop={'2rem'}>Sass/Scssについて</Text>
-                    </Box>
-                    <Box>
-                        <Flex bg={'blue'} w={'40rem'} h={'30rem'} justifyContent={'center'} alignItems={'center'}>
-                            <Text color={'#fff'} fontSize={'9xl'}>img</Text>
-                        </Flex>
-                        <Text fontSize={'3xl'} marginTop={'2rem'}>JavaScriptについて</Text>
-                    </Box>
-                    <Box>
-                        <Flex bg={'blue'} w={'40rem'} h={'30rem'} justifyContent={'center'} alignItems={'center'}>
-                            <Text color={'#fff'} fontSize={'9xl'}>img</Text>
-                        </Flex>
-                        <Text fontSize={'3xl'} marginTop={'2rem'}>TypeScriptについて</Text>
-                    </Box>
-                    <Box>
-                        <Flex bg={'blue'} w={'40rem'} h={'30rem'} justifyContent={'center'} alignItems={'center'}>
-                            <Text color={'#fff'} fontSize={'9xl'}>img</Text>
-                        </Flex>
-                        <Text fontSize={'3xl'} marginTop={'2rem'}>React.jsについて</Text>
-                    </Box>
+                <Flex flexWrap={'wrap'} w={'100rem'} boxShadow={'dark-lg'} gap={'4rem'} justifyContent={'center'} alignItems={'start'} paddingY={'4rem'}>
+                    {
+                        posts.map((post: any) => (
+                            <Link href={post.slug} key={post.slug}>
+                                <Image src={post.visual} alt={post.title} />
+                                <Text fontSize={'3xl'} marginTop={'2rem'}>{post.title}</Text>
+                            </Link>
+                        ))
+                    }
                 </Flex>
                 <Button
                     w={'20rem'}
@@ -56,3 +34,5 @@ export default function Article() {
         </>
     )
 }
+
+export default Article

@@ -1,5 +1,7 @@
 ---
-title: "投稿サンプル"
+title: "投稿サンプル２"
+date: "2023/05/09"
+visual: "img1.png"
 tags: ["タグ2"]
 ---
 
