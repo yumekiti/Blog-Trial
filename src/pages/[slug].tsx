@@ -42,7 +42,7 @@ export const getStaticProps: GetStaticProps<PostProps, { slug: string }> = async
 
 const components = (slug: string) => ({
   img: (image: any) => {
-    const src = `/contents/${slug}/${image.src}`;
+    const src = `${process.env.BRANCH_NAME ? process.env.BRANCH_NAME : ''}/contents/${slug}/${image.src}`;
     const metaString = image.alt;
     const alt = metaString.replace(/ *{[\d:\/]+} */g, "");
     const matchResult = metaString.match(/{((\d+):)?(\d+\/\d+)}/);
