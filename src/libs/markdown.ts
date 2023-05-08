@@ -40,7 +40,7 @@ export const getPosts = () => {
       slug,
       title: data.title,
       date: data.date,
-      visual: `${process.env.BRANCH_NAME}/contents/${slug}/${data.visual}`,
+      visual: `/contents/${slug}/${data.visual}`,
       tags: data.tags,
       // content: htmlContent
     }
