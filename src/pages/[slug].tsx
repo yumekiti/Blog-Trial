@@ -1,7 +1,8 @@
 import { GetStaticPaths, GetStaticProps } from 'next'
+import Image from "next/image";
 import { convertToHtml, getFile, getSlugs, readFile } from "../libs/markdown";
+import ReactMarkdown from 'react-markdown'
 
-// ページの props の型定義
 type PostProps = {
   postData: {
     content: string
@@ -9,44 +10,49 @@ type PostProps = {
       title: string
       date: string
     }
-  }
+  },
+  slug: string
 }
 
-// 動的ルーティングに必要なパスを返す関数
 export const getStaticPaths: GetStaticPaths = async () => {
-  // マークダウンファイルのファイル名からslugを取得して、paramsにセットする
   const paths = getSlugs().map((slug) => ({ params: { slug } }))
   return {
     paths,
-    fallback: false, // fallbackをfalseにすると、存在しないパスへのアクセスは404エラーとなる
+    fallback: false,
   }
 }
 
-// パスからデータを取得する関数
 export const getStaticProps: GetStaticProps<PostProps, { slug: string }> = async ({ params }) => {
-  // params.slugが存在すれば、slugに代入。存在しなければundefinedとなる。
-  const slug = params?.slug
-  // slugを元にマークダウンファイルのパスを取得する
-  const file = getFile(slug as string)
-  // ファイルからcontentとdataを取得する
+  const slug = String(params?.slug)
+  const file = getFile(slug)
   const { content, data } = readFile(file)
-  // contentをHTMLに変換し、postDataにセットする
   const postData = {
-    content: await convertToHtml(content),
+    content: content,
     data,
   }
-  // postDataをpropsとして返す
-  return { props: { postData } }
+  return { props: { postData, slug } }
 }
 
-// ポストコンポーネント
-export default function Post({ postData }: PostProps) {
+const components = (slug: string) => ({
+  img: (image: any) => {
+    const src = `/contents/${slug}/${image.src}`;
+    const metaString = image.alt;
+    const alt = metaString.replace(/ *{[\d:\/]+} */g, "");
+    const matchResult = metaString.match(/{((\d+):)?(\d+\/\d+)}/);
+    const aspectRatio = matchResult?.[3] || "16/9";
+    const maxWidth = matchResult?.[2] || "600";
+    const [aspectW, aspectH] = aspectRatio.split("/").map((str: any) => Number(str));
+    const width = Math.min(Number(maxWidth), 640);
+    const height = width * (aspectH / aspectW);
+
+    return <Image src={src} alt={alt} width={width} height={height} />;
+  },
+})
+
+export default function Post({ postData, slug }: PostProps) {
   const { title, date } = postData.data
+  const renderers = components(slug);
   return (
-    <div>
-      <h1>{title}</h1>
-      <div>{date}</div>
-      <div dangerouslySetInnerHTML={{ __html: postData.content }} />
-    </div>
+    <ReactMarkdown children={postData.content} components={renderers} />
   )
 }
