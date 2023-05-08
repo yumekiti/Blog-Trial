@@ -2,6 +2,11 @@ import { GetStaticPaths, GetStaticProps } from 'next'
 import Image from "next/image";
 import { convertToHtml, getFile, getSlugs, readFile } from "../libs/markdown";
 import ReactMarkdown from 'react-markdown'
+import ChakraUIRenderer from 'chakra-ui-markdown-renderer';
+
+import Head from 'next/head'
+import { Card, CardHeader, CardBody, Text, Box, Grid, GridItem } from '@chakra-ui/react'
+import Header from '../components/Header'
 
 type PostProps = {
   postData: {
@@ -9,6 +14,8 @@ type PostProps = {
     data: {
       title: string
       date: string
+      visual: string
+      tags: string[]
     }
   },
   slug: string
@@ -50,9 +57,51 @@ const components = (slug: string) => ({
 })
 
 export default function Post({ postData, slug }: PostProps) {
-  const { title, date } = postData.data
+  const { title, date, visual, tags } = postData.data;
   const renderers = components(slug);
+
   return (
-    <ReactMarkdown children={postData.content} components={renderers} />
+    <>
+      <Head>
+        <title>{title}</title>
+      </Head>
+      <Header />
+      <Grid
+        w={'100%'}
+        h={'95vh'}
+        templateColumns='repeat(2, 1fr)'
+        gap={4}
+        bgGradient={'linear(to-tl,blue.200,purple.200)'}
+      >
+        <GridItem
+          colSpan={1}
+          display={'flex'}
+          justifyContent={'center'}
+          alignItems={'center'}
+          position={'fixed'}
+          top={'55%'}
+          right={0}
+          transform={'translateY(-50%)'}
+          w={'50%'}
+        >
+          <Box padding={'2rem'}>
+            <Image src={`/contents/${slug}/${visual}`} alt={title} width={640} height={360} />
+            <Text fontSize={'6xl'} marginTop={'2rem'}>{title}</Text>
+            <Text fontSize={'2xl'}>{date}</Text>
+            <Text fontSize={'3xl'} marginTop={'2rem'}>{tags}</Text>
+          </Box>
+        </GridItem>
+        <GridItem colSpan={1}>
+          <Card bg={'#fff'} boxShadow={'dark-lg'} padding={'2rem'} margin={'2rem'}>
+            <CardHeader>
+              <Text fontSize={'xl'}>{title}</Text>
+            </CardHeader>
+            <CardBody>
+              <ReactMarkdown children={postData.content} components={ChakraUIRenderer(renderers)} />
+            </CardBody>
+          </Card>
+        </GridItem>
+      </Grid>
+    </>
   )
 }
