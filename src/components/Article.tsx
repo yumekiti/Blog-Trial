@@ -14,7 +14,7 @@ const Article: FC<Props> = ({ posts }) => {
                     {
                         posts.map((post: any) => (
                             <Link href={post.slug} key={post.slug} _hover={{ opacity: 0.6 }}>
-                                <Image src={post.visual} alt={post.title} />
+                                <Image src={post.visual} alt={post.title} width={400} height={300} objectFit={'contain'} />
                                 <Text fontSize={'3xl'} marginTop={'2rem'}>{post.title}</Text>
                             </Link>
                         ))
