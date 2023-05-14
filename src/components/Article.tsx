@@ -1,6 +1,5 @@
 import { FC } from 'react'
-import Link from 'next/link'
-import { Image, Flex, Text, Button } from '@chakra-ui/react'
+import { Link, Image, Flex, Text, Button } from '@chakra-ui/react'
 
 type Props = {
     posts: any
@@ -14,7 +13,7 @@ const Article: FC<Props> = ({ posts }) => {
                 <Flex flexWrap={'wrap'} w={'100rem'} boxShadow={'dark-lg'} gap={'4rem'} justifyContent={'center'} alignItems={'start'} paddingY={'4rem'}>
                     {
                         posts.map((post: any) => (
-                            <Link href={post.slug} key={post.slug}>
+                            <Link href={post.slug} key={post.slug} _hover={{ opacity: 0.6 }}>
                                 <Image src={post.visual} alt={post.title} />
                                 <Text fontSize={'3xl'} marginTop={'2rem'}>{post.title}</Text>
                             </Link>

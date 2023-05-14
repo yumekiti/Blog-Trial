@@ -70,7 +70,7 @@ export default function Post({ postData, slug }: PostProps) {
       <Header />
       <Grid
         w={'100%'}
-        h={'90vh'}
+        h={'92vh'}
         templateColumns='repeat(2, 1fr)'
         gap={4}
         bgGradient={'linear(to-tl,blue.200,purple.200)'}
