@@ -6,6 +6,8 @@ import { remark } from 'remark'
 import { sanitize } from 'isomorphic-dompurify';
 import remarkImages from 'remark-images';
 
+const branchName = process.env.BRANCH_NAME !== undefined ? '/' + process.env.BRANCH_NAME : ''
+
 export const getFiles = () => {
   return fs.readdirSync(path.join(process.cwd(), 'public/contents'))
 }
@@ -40,7 +42,7 @@ export const getPosts = () => {
       slug,
       title: data.title,
       date: data.date,
-      visual: `${'/' + process.env.BRANCH_NAME || ''}/contents/${slug}/${data.visual}`,
+      visual: `${branchName}/contents/${slug}/${data.visual}`,
       tags: data.tags,
       // content: htmlContent
     }

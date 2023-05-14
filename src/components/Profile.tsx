@@ -2,6 +2,8 @@ import { Box, Flex, Text } from '@chakra-ui/react'
 import Image from 'next/image'
 
 export default function Profile() {
+    const branchName = process.env.BRANCH_NAME !== undefined ? '/' + process.env.BRANCH_NAME : ''
+
     return (
         <>
             <Flex w={'100%'} h={'50rem'} flexDir={'column'} justifyContent={'center'} alignItems={'center'} marginTop={'40rem'}>
@@ -9,7 +11,7 @@ export default function Profile() {
                 <Flex w={'90rem'} h={'40rem'} bg={'#fff'} justifyContent={'center'} alignItems={'center'} boxShadow={'dark-lg'}>
                     <Flex w={'40rem'} h={'35rem'} bg={'purple'} justifyContent={'center'} alignItems={'center'} marginRight={'5rem'}>
                         {/* <Text fontSize={'4xl'} color={'#fff'} fontWeight={'extrabold'}>ECC</Text> */}
-                        <Image src={`${'/' + process.env.BRANCH_NAME || ''}/images/profile.svg`} width={400} height={350} alt={'profile'} />
+                        <Image src={`${branchName}/images/profile.svg`} width={400} height={350} alt={'profile'} />
                     </Flex>
                     <Box w={'40rem'} h={'35rem'}>
                         <Text fontSize={'2xl'} padding={'2rem 2rem 2rem 0'}>

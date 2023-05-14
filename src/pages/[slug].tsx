@@ -42,7 +42,8 @@ export const getStaticProps: GetStaticProps<PostProps, { slug: string }> = async
 
 const components = (slug: string) => ({
   img: (image: any) => {
-    const src = `${'/' + process.env.BRANCH_NAME || ''}/contents/${slug}/${image.src}`;
+    const branchName = process.env.BRANCH_NAME !== undefined ? '/' + process.env.BRANCH_NAME : ''
+    const src = `${branchName}/contents/${slug}/${image.src}`;
     const metaString = image.alt;
     const alt = metaString.replace(/ *{[\d:\/]+} */g, "");
     const matchResult = metaString.match(/{((\d+):)?(\d+\/\d+)}/);
@@ -59,15 +60,9 @@ const components = (slug: string) => ({
 export default function Post({ postData, slug }: PostProps) {
   const { title, date, visual, tags } = postData.data;
   const renderers = components(slug);
+  const branchName = process.env.BRANCH_NAME !== undefined ? '/' + process.env.BRANCH_NAME : ''
 
   return (
-<<<<<<< HEAD
-    <div>
-      <h1 className='title'>{title}</h1>
-      <div>{date}</div>
-      <div dangerouslySetInnerHTML={{ __html: postData.content }} />
-    </div>
-=======
     <>
       <Head>
         <title>{title}</title>
@@ -75,7 +70,7 @@ export default function Post({ postData, slug }: PostProps) {
       <Header />
       <Grid
         w={'100%'}
-        h={'95vh'}
+        h={'90vh'}
         templateColumns='repeat(2, 1fr)'
         gap={4}
         bgGradient={'linear(to-tl,blue.200,purple.200)'}
@@ -92,7 +87,7 @@ export default function Post({ postData, slug }: PostProps) {
           w={'50%'}
         >
           <Box padding={'2rem'}>
-            <Image src={`${'/' + process.env.BRANCH_NAME || ''}/contents/${slug}/${visual}`} alt={title} width={640} height={360} />
+            <Image src={`${branchName}/contents/${slug}/${visual}`} alt={title} width={640} height={360} />
             <Text fontSize={'6xl'} marginTop={'2rem'}>{title}</Text>
             <Text fontSize={'2xl'}>{date}</Text>
             <Text fontSize={'3xl'} marginTop={'2rem'}>{tags}</Text>
@@ -112,6 +107,5 @@ export default function Post({ postData, slug }: PostProps) {
         </GridItem>
       </Grid>
     </>
->>>>>>> e247b3e3d40bccf7b2cca4cf7961f87f038150a9
   )
 }
